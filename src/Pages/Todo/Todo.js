@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
-import { FcPlus } from 'react-icons/fc';
-import { BiPen } from 'react-icons/bi';
-import { TiTrash }  from 'react-icons/ti';
-import PromptModal from './../../Components/Aside/MainAside/Todo/Modal/PromptModal/PromptModal';
+
+
+import PromptModal from '../../Components/Todo/Modal/PromptModal/PromptModal';
+import { TodoList } from '../../Components/Todo/TodoList/style';
+import AddTodo from './../../Components/Todo/AddTodo/AddTodo';
 
 const TodoContainer = css`
     display: flex;
@@ -14,91 +15,11 @@ const TodoContainer = css`
     width: 100%;
 `;
 
-const TodoAddition = css`
-    position: sticky;
-    top: 0px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    border-radius: 7px;
-    padding: 10px;
-    width: 600px;
-    height: 60px;
-    background-color: #eee;    
-`;
 
-const AdditionInput = css`
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    border-bottom: 3px solid white;
-    padding: 0px 50px 0px 10px;
-    width: 100%;
-    height: 100%;
-    font-size: 1.2rem;
-    background-color: #eee;
-    &:hover{
-        transform: rotate(360);
-    }
-`;
 
-const TodoAddButton = css`
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    right: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 0;
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
-    background-color: #ffffff00;
-    transition: all 1s ease;
-    cursor: pointer;
-    &:hover{
-        transform: translateY(-50%) rotate(3090deg) scale(1.5);
-    }
 
-`;
 
-const TodoList = css`
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-    border-radius: 7px;
-    padding: 10px;
-    width: 600px;
 
-    background-color: #fafafa;
-`;
-
-const TodoContent = css`
-    width: 85%;
-    height: 40px;   
-`;
-
-const ItemGroup = css`
-    display: flex;
-    align-items: center;
-    height: 40px;
-
-`;
-
-const ItemButton = css`
-    display: flex;
-    align-items: center;
-    border: none;
-    height: 100%;
-    color: #999;
-    background-color: #ffffff00;
-    &:hover{
-        color: #121212;
-    }
-`;
 
 const Todo = () => {
     const [modifyTodo, setModifyTodo] = useState({
@@ -256,20 +177,11 @@ const modalButton = css`
     return (
         <>
             <div css ={TodoContainer}>
-                <div css = {TodoAddition}>
-                    <input css={AdditionInput} type="text" placeholder='할 일을 입력하세요.'  onChange={onChange} onKeyUp={onKeyUp} Value={input.content}/>
-                    <button css = {TodoAddButton} onClick={onAdd}><FcPlus /></button>
-                </div>
+                <AddTodo onChange={onChange} onKeyUp={onKeyUp} value={input.content} onAdd={onAdd}/>
                 {todoList.map(
                     todo => {
                         return (
-                            <div css = {TodoList} key={todo.id}>
-                                <div css = {TodoContent}>{todo.content}</div>
-                                <div css = {ItemGroup}>
-                                    <button css = {ItemButton} onClick={() => openModal(todo.id)}><BiPen /></button>
-                                    <button css = {ItemButton} onClick={() => onRemove(todo.id)}><TiTrash /></button>
-                                </div>
-                            </div>
+                            <TodoList todo = {todo} openModal={openModal} onRemove={onRemove} />
                         );
                     }
                 )}                

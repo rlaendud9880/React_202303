@@ -1,7 +1,7 @@
-import { css } from '@emotion/react';
+import { css } from "@emotion/react";
 
 export const modalContainer = css`
-    position: flex;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 99;
@@ -12,7 +12,8 @@ export const modalContainer = css`
     height: 100%;
 
     background-color: #000000aa;
-    `;
+`;
+
 export const modalBox = css`
     border-radius: 7px;
     width: 350px;
@@ -20,6 +21,7 @@ export const modalBox = css`
     background-color: #fafafa;
     overflow: hidden;
 `;
+
 export const modalHeader = css`
     display: flex;
     justify-content: center;
@@ -58,22 +60,4 @@ export const modalFooter = css`
     align-items: center;
 
     height: 40px;
-`;
-
-export const modalButton = css`
-    cursor: pointer;
-    border: none;
-    background-color: #ffffff00;
-    width: 50%;
-    height: 100%;
-    font-weight: 600;
-    &:first-child {
-        border-right: 1px solid #dbdbdb;
-    }
-    &:hover{
-        background-color: #eee;
-    }
-    &:active{
-        background-color: #dbdbdb;
-    }
 `;

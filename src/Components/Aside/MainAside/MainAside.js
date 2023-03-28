@@ -67,6 +67,16 @@ const MainAside = () => {
                 itemId: '/todo',
                 elemBefore: () => <FcTodoList />,
               },
+              {
+                title: 'NumberCounter',
+                itemId: '/number/counter',
+                elemBefore: () => <FcTodoList />,
+              },
+              {
+                title: 'TestTodoList',
+                itemId: '/test/todo',
+                elemBefore: () => <FcTodoList />,
+              },
             ]}
           />
         </aside>

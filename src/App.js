@@ -3,6 +3,7 @@ import InputSample from "./Pages/InputSample/InputSample";
 import MainAside from './Components/Aside/MainAside/MainAside';
 import UserList from './Pages/UserList/UserList';
 import Todo from './Pages/Todo/Todo';
+import NumberCounter from './Pages/NumberCounter/NumberCounter';
 
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/sample/input/1" Component={InputSample}/> 
         <Route path="/users" Component={UserList}/> 
         <Route path="/todo" Component={Todo}/>
+        <Route path="/number/counter" Component={NumberCounter}/>
       </Routes>
     </>    
   );
