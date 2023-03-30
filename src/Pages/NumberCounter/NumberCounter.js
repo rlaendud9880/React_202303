@@ -4,14 +4,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import React from 'react';
 import { useState } from 'react';
 import { Provider, useDispatch, useSelector } from "react-redux";
-import { createStore } from "redux";
-
 
 const Container = css`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     margin: 50px auto;
     border: 3px solid green;
     width: 400px;
@@ -29,65 +28,63 @@ const BoxContainer = css`
     height: 80%;
 `;
 
-
-const increaseFuntion = (state) => {
+const increaseFunction = (state) => {
     state.number++;
     return state;
 }
 
 const reducer = (currentState, action) => {
-
     if(currentState === undefined) {
         return {
-            number : 10
+            number: 10
         }
     }
 
     let newState = {...currentState};
-    switch(action.type){
-        case 'increase':
-            newState = increaseFuntion(newState);
+    switch(action.type) {
+        case 'increase': 
+            newState = increaseFunction(newState);
             break;
-        case 'decrease':
+        case 'decrease': 
             newState.number--;
             break;
         default: break;
     }
 
-   
-    
-    // if(action.type === 'increase') {
+    // if(action.type === 'increase'){
     //     newState.number++;
+
     // }else if(action.type === 'decrease') {
     //     newState.number--;
     // }
 
-
     return newState;
 }
 
-const store = configureStore({reducer}); // store 생성
+const store = configureStore({reducer});
 
-
-const Box = ({ title,  children }) => {
+const Box = ({ title, children }) => {
     const count = useSelector(store => store.number);
     return (
-        <div css = {BoxContainer}>
+        <div css={BoxContainer}>
             <h1>{title}</h1>
             <h2>count: {count}</h2>
             {children}
         </div>
     );
-};
+}
+
 
 const Buttons = () => {
     const dispatch = useDispatch();
+
     const increaseCount = () => {
-        dispatch({type: 'increase'});
+        dispatch({ type: 'increase' });
     }
     const decreaseCount = () => {
-        dispatch({type: 'decrease'});
+        dispatch({ type: 'decrease' });
     }
+
     return (
         <>
             <button onClick={increaseCount}>+</button>
@@ -95,7 +92,10 @@ const Buttons = () => {
         </>
     )
 }
+
+
 const NumberCounter = () => {
+
     // const [count, setCount] = useState(0);
 
     // const increaseCount = () => {
@@ -106,14 +106,13 @@ const NumberCounter = () => {
     //     setCount(count - 1);
     // }
 
-
     return (
         <div css={Container}>
             <Provider store={store}>
                 <Box title={'box1'}>
                     <Box title={'box2'}>
                         <Box title={'box3'}>
-                            <Box title={'box4'}>
+                            <Box title={'box3'}>
                                 <Buttons />
                             </Box>
                         </Box>

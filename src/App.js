@@ -4,6 +4,7 @@ import MainAside from './Components/Aside/MainAside/MainAside';
 import UserList from './Pages/UserList/UserList';
 import Todo from './Pages/Todo/Todo';
 import NumberCounter from './Pages/NumberCounter/NumberCounter';
+import TestTodoList from './Pages/TestTodoList/TestTodoList';
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/users" Component={UserList}/> 
         <Route path="/todo" Component={Todo}/>
         <Route path="/number/counter" Component={NumberCounter}/>
+        <Route path="/test/todo" Component={TestTodoList}/>
       </Routes>
     </>    
   );
